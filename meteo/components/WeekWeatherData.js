@@ -17,7 +17,7 @@ export default function App() {
             let location = await Location.getCurrentPositionAsync({});
             const { latitude, longitude } = location.coords;
 
-            fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&appid=b0c846745fe0887c91d1ed6dfd4a0719`)
+            fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&lang=fr&appid=b0c846745fe0887c91d1ed6dfd4a0719`)
                 .then(response => response.json())
                 .then(data => {
                     const daysData = groupForecastByDay(data.list);
@@ -57,7 +57,7 @@ export default function App() {
                     <Image source={{ uri: `https://openweathermap.org/img/w/${dataItem.weather[0].icon}.png` }} style={{ width: 50, height: 50 }} />
                     <Text>Heure: {dataItem.dt_txt}</Text>
                     <Text>Météo: {dataItem.weather[0].description}</Text>
-                    <Text>Température: {dataItem.main.temp}</Text>
+                    <Text>Température: {dataItem.main.temp} °C</Text>
                 </Card>
             ))}
         </View>

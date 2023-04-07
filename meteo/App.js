@@ -34,16 +34,16 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   welcome: {
-    fontSize: 36,
+    fontSize: 48,
     fontWeight: 'bold',
     color: '#fff'
   },
   text: {
-    fontSize: 12,
+    fontSize: 20,
     fontWeight: 'bold',
     marginTop: 20,
     marginBottom: 20,
-    color: '#fff',
+    color: '#EAE53D',
     alignItems: 'center',
   }
 });

@@ -17,7 +17,7 @@ export default function WeatherData() {
             let location = await Location.getCurrentPositionAsync({});
             const { latitude, longitude } = location.coords;
 
-            fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=b0c846745fe0887c91d1ed6dfd4a0719`)
+            fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&lang=fr&appid=b0c846745fe0887c91d1ed6dfd4a0719`)
                 .then(response => response.json())
                 .then(data => {
                     setWeatherData(data);
@@ -39,7 +39,7 @@ export default function WeatherData() {
                     <Image source={{ uri: `https://openweathermap.org/img/w/${weatherData.weather[0].icon}.png` }} style={{ width: 150, height: 150, alignContent: 'center' }} />
                     <Text>Ville: {weatherData.name}</Text>
                     <Text>Météo: {weatherData.weather[0].description}</Text>
-                    <Text>Température: {weatherData.main.temp}</Text>
+                    <Text>Température: {weatherData.main.temp} °C</Text>
                 </Card>
             ) : (
                 <Text style={styles.textChargement} >Chargement...</Text>
