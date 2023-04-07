@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Text, View, Image, FlatList } from 'react-native';
+import { Text, View, Image, FlatList, ScrollView } from 'react-native';
 import { Card, ListItem, Button, Icon } from 'react-native-elements'
 
 export default function App() {
@@ -42,26 +42,29 @@ export default function App() {
             <Text>Date: {item.date}</Text>
             {item.data.map(dataItem => (
                 <Card key={dataItem.dt}>
+                    <Image source={{ uri: `https://openweathermap.org/img/w/${dataItem.weather[0].icon}.png` }} style={{ width: 50, height: 50 }} />
                     <Text>Heure: {dataItem.dt_txt}</Text>
                     <Text>Météo: {dataItem.weather[0].description}</Text>
                     <Text>Température: {dataItem.main.temp}</Text>
-                    <Image source={{ uri: `https://openweathermap.org/img/w/${dataItem.weather[0].icon}.png` }} style={{ width: 50, height: 50 }} />
                 </Card>
             ))}
         </View>
     );
 
     return (
-        <View>
-            {forecastData ? (
-                <FlatList
-                    data={forecastData}
-                    renderItem={renderItem}
-                    keyExtractor={item => item.date}
-                />
-            ) : (
-                <Text>Chargement...</Text>
-            )}
-        </View>
+        <ScrollView>
+            <View>
+                {forecastData ? (
+                    <FlatList
+                        data={forecastData}
+                        renderItem={renderItem}
+                        keyExtractor={item => item.date}
+                        horizontal={true}
+                    />
+                ) : (
+                    <Text>Chargement...</Text>
+                )}
+            </View>
+        </ScrollView>
     );
 }
