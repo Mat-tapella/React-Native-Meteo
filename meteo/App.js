@@ -3,12 +3,17 @@ import { Text, View, StyleSheet, Image, FlatList } from 'react-native';
 import WeatherData from './components/WeatherData';
 import WeekWeatherData from './components/WeekWeatherData';
 
+
 export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text>Bienvenue</Text>
+      <View style={styles.containerTop}>
+        <Text style={styles.welcome}>Bienvenue</Text>
+        <Text style={styles.text}>La météo du jour</Text>
+      </View>
       <WeatherData />
+      <Text style={styles.text}>La météo des jours à venir</Text>
       <WeekWeatherData />
     </View>
 
@@ -19,8 +24,26 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#5220AD',
     alignItems: 'center',
     justifyContent: 'center',
   },
+  containerTop: {
+    marginTop: 60,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  welcome: {
+    fontSize: 36,
+    fontWeight: 'bold',
+    color: '#fff'
+  },
+  text: {
+    fontSize: 12,
+    fontWeight: 'bold',
+    marginTop: 20,
+    marginBottom: 20,
+    color: '#fff',
+    alignItems: 'center',
+  }
 });
